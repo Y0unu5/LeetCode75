@@ -25,5 +25,6 @@ public class MaxConsecutive {
         int k=2;
         int ans= c.maxConsecutive(nums,k);
         System.out.println(ans);
+        //ans = 6
     }
 }
