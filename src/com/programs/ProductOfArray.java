@@ -3,31 +3,36 @@ package com.programs;
 import java.util.Arrays;
 
 public class ProductOfArray {
-    public static int[] productExceptSelf(int[] nums){
-        int n= nums.length;
-        int i, temp=1;
+
+    public static int[] productExceptSelf(int[] arr){
+        int n= arr.length;
         int[] prod= new int[n];
 
-        for (int j=0; j< n; j++)
-            prod[j]=1;
-        for (i=0; i< n; i++){
-            prod[i]= temp;
-            temp *= nums[i];
+        for (int i=0; i< n; i++){
+            prod[i]=1;
         }
 
-        temp=1;
-        for (i=n-1; i>=0; i--){
+        // Calculate product from left to right
+        int temp=1;
+        for (int i=0; i< n; i++){
             prod[i] *= temp;
-            temp *= nums[i];
+            temp *= arr[i];
         }
-        for (i=0; i<n; i++)
+        temp = 1;
+        for (int i = n - 1; i >= 0; i--) {
+            prod[i] *= temp;
+            temp *= arr[i];
+        }
+
+        for (int i=0; i<n; i++){
             System.out.print(prod[i]+ " ");
+        }
 
         return prod;
     }
 
     public static void main(String[] args) {
-        int[] nums = {-1,1,0,-3,3};
+        int[] nums = {1,2,3,4};
         productExceptSelf(nums);
         //System.out.println(Arrays.toString(res));
     }
