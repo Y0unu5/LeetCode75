@@ -1,37 +1,32 @@
 package com.programs;
 
 public class GCDofStrings {
-    public String gcdOfString(String str1, String str2){
-        if (str1.length() < str2.length())
-            return gcdOfString(str2,str1);
-        if (!str1.startsWith(str2))
-            return "";
-        if (str2.isEmpty())
-            return str1;
-        return gcdOfString(str2, mod(str1,str2));
-    }
-    public String gcdOfStrings(String a, String b) {
-        if(!(a + b).equals(b + a))return "";
 
-        int gcd = gcd(a.length(), b.length());
+    public static String gcdOfStrings(String str1, String str2) {
+        String result = null;
+        int len1 = str1.length(), len2 = str2.length();
+        int maxLen = Math.min(len1, len2);
 
-        return a.substring(0, gcd);
-    }
+        for (int i = maxLen; i >= 1; i--) {
+            if (len1 % i == 0 && len2 % i == 0 && str1.substring(0, i).equals(str2.substring(0, i))) {
+                String tmp1 = str1.substring(i) + str1.substring(0, i);
+                String tmp2 = str2.substring(i) + str2.substring(0, i);
+                if (tmp1.equals(str1) && tmp2.equals(str2)) {
+                    result = str1.substring(0, i);
+                    break;
+                }
+            }
+        }
+        if (result == null) {
+            result = "";
+        }
 
-    int gcd(int a, int b){
-        if(b==0)return a;
-        return gcd(b, a%b);
-    }
-    private String mod(String st1, String st2){
-        while (st1.startsWith(st2))
-            st1= st1.substring(st2.length());
-        return st1;
+        return result;
     }
 
     public static void main(String[] args) {
-        String s= "ABCABC", str2 = "ABC";
-        GCDofStrings gdc=new GCDofStrings();
-        String ans=gdc.gcdOfStrings(s, str2);
+        String str1 = "ABCABC", str2 = "ABC";
+        String ans= gcdOfStrings(str1,str2);
         System.out.println(ans);
     }
 }
