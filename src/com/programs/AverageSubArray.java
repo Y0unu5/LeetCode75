@@ -3,7 +3,7 @@ package com.programs;
 public class AverageSubArray
 {
     public static double findMaxAverage(int[] nums, int k){
-        /**
+        /*
          * Initialized currentSum=0
          * 1st for loop: Initially currentSum is Cal for first k elements
          * Re assigning currentSum to maxSum
