@@ -39,7 +39,7 @@ public class MostWater {
         return max;
     }
 
-    public int maxArea1(int[] height) {
+     public int maxArea1(int[] height) {
         int l = 0, r = height.length - 1, max = Integer.MIN_VALUE;
         while (l < r) {
             int minHeight = Math.min(height[l], height[r]);
@@ -58,8 +58,8 @@ public class MostWater {
         public static void main (String[]args){
             int[] hieghts = {1, 8, 6, 2, 5, 4, 8, 3, 7};
             MostWater water = new MostWater();
-            int max = water.maxArea1(hieghts);
+           // int max = water.maxArea1(hieghts);
             int m = water.max(hieghts);
-            System.out.println(max);
+            System.out.println(m);
         }
     }
